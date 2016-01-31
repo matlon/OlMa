@@ -10,13 +10,14 @@ public class PieceBehaviour : MonoBehaviour {
 	protected MeshRenderer mr;
 
 	public Vector2 matrixPosition;
-	public Color selectColor = Color.red;
-	public int type = 0;
+
+    private MeshRenderer outlineRenderer;
 
 	// Use this for initialization
 	void Start () {
 		mr = GetComponent<MeshRenderer>();
-		ph = GameObject.Find("GlobalManager").GetComponent<PieceHandler>();
+        if (transform.GetChild(0) != null) outlineRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+        ph = GameObject.Find("GlobalManager").GetComponent<PieceHandler>();
 		matrixPosition = new Vector2(1,1);
 	}
 	
@@ -39,14 +40,14 @@ public class PieceBehaviour : MonoBehaviour {
 
 	public void Select()
 	{
-		mr.material.color = selectColor;
+        outlineRenderer.enabled = true;
 		isSelected = true;
 	}
 
 	public void Deselect()
-	{
-		mr.material.color = Color.white;
-		isSelected = false;
+    {
+        outlineRenderer.enabled = false;
+        isSelected = false;
 	}
 
 	public void SetMatrixPosition(int x, int z)
@@ -62,10 +63,5 @@ public class PieceBehaviour : MonoBehaviour {
 	public int GetMatrixPositionZ()
 	{
 		return (int )matrixPosition.y;
-	}
-
-	public int GetType()
-	{
-		return type;
 	}
 }

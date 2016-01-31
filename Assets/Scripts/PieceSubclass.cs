@@ -7,7 +7,6 @@ public class PieceSubclass : PieceBehaviour {
 	void Start () {
 		mr = GetComponent<MeshRenderer>();
 		ph = GameObject.Find("TurnManager").GetComponent<PieceHandler>();
-		selectColor = Color.blue;
 	}
 
 }
