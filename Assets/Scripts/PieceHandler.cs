@@ -59,23 +59,9 @@ public class PieceHandler : MonoBehaviour {
 		int cbx = currentMarkedPiece.GetMatrixPositionX();
 		int cbz = currentMarkedPiece.GetMatrixPositionZ();
 
-		int type = currentMarkedPiece.GetType();
+		currentMarkedPiece.GetComponent<PieceMovement>();
 
-		availableMoves = new ArrayList();
-
-		if (type == 0)
-		{
-			for(int i = -1; i <= 1; i++)
-			{
-				for (int j = -1; j <= 1; j++)
-				{
-					if (isValidIndex(cbx + i, cbz + j) && board[cbx + i, cbz + j].CheckAvailable())
-					{
-						availableMoves.Add(board[cbx + i, cbz + j]);
-					}
-				}
-			}
-		}
+		availableMoves = currentMarkedPiece.GetComponent<PieceMovement>().GetValidMoves(board, cbx, cbz);
 	}
 
 	private bool isValidIndex(int x, int z)
