@@ -17,7 +17,7 @@ public class PieceBehaviour : MonoBehaviour {
 	void Start () {
 		mr = GetComponent<MeshRenderer>();
 		ph = GameObject.Find("GlobalManager").GetComponent<PieceHandler>();
-		matrixPosition = new Vector2(1,1);
+		matrixPosition = new Vector2((int)transform.position.x, (int)transform.position.z);
 	}
 	
 	// Update is called once per frame
