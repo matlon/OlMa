@@ -25,7 +25,7 @@ public class PieceBehaviour : MonoBehaviour {
 	
 	}
 
-	void OnMouseDown () 
+	void OnMouseUpAsButton () 
 	{
 		if (!isSelected) 	// Select this Piece
 		{
