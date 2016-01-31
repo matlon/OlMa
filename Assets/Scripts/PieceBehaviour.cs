@@ -10,12 +10,14 @@ public class PieceBehaviour : MonoBehaviour {
 	protected MeshRenderer mr;
 
 	public Vector2 matrixPosition;
+    private Color originalColor;
 	public Color selectColor = Color.red;
 	public int type = 0;
 
 	// Use this for initialization
 	void Start () {
 		mr = GetComponent<MeshRenderer>();
+        originalColor = mr.material.color;
 		ph = GameObject.Find("GlobalManager").GetComponent<PieceHandler>();
 		matrixPosition = new Vector2((int)transform.position.x, (int)transform.position.z);
 	}
@@ -45,7 +47,7 @@ public class PieceBehaviour : MonoBehaviour {
 
 	public void Deselect()
 	{
-		mr.material.color = Color.white;
+		mr.material.color = originalColor;
 		isSelected = false;
 	}
 
